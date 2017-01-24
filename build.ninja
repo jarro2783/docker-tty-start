@@ -1,0 +1,9 @@
+rule cc_link
+    command = gcc -o $out $in $LIBS
+
+rule cc
+    command = gcc -o $out $in -c -O2 -Wall
+
+build main.o: cc main.c
+
+build docker-tty-start: cc_link main.o
